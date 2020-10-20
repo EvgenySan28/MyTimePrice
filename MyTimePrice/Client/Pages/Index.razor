@@ -1,0 +1,39 @@
+﻿@page "/"
+<label>график работы</label>
+<select @onchange="OnSel">
+    <option value="1">5 через 2</option>
+    <option value="2">сутки через трое</option>
+    <option value="3">сутки через двое</option>
+    <option value="4">день ночь отсыпной выходной</option>
+</select>
+<br />
+<label>Зарплата</label>
+<input type="number"  name="name" @bind-value="mounthPay" />
+<br />
+<button @onclick="Calculate" >Рассчитать</button>
+<br />
+<label>Цена часа составляет </label>@hourPrice
+@code
+{
+    int mounthPay;
+    int workHours =189;
+    int hourPrice;
+
+    private void OnSel(ChangeEventArgs e)
+    {
+        e.Value.ToString();
+        switch (e.Value.ToString())
+        {
+            case "1": workHours = 189;break;
+            case "2": workHours = 192; break;
+            case "3": workHours = 240; break;
+            case "4": workHours = 192; break;
+
+            default:break;
+        }
+    }
+    private void Calculate()
+    {
+        hourPrice = mounthPay / workHours;
+    }
+}
