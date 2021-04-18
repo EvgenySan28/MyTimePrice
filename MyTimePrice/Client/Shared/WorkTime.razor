@@ -1,0 +1,45 @@
+﻿
+<div class="work-timer">
+    <div>09:00</div>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: @(currentProgress)%" aria-valuenow="12" aria-valuemin="0" aria-valuemax="100">@DateTime.Now</div>
+    </div>
+    <div>18:00</div>
+</div>
+@code {
+    DateTime start { get; set; }
+    DateTime stop { get; set; }
+    int currentProgress;
+    protected override void OnInitialized()
+    {
+        SetTime();
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        ReloadPage();
+    }
+    async Task ReloadPage()
+    {
+        SetTime();
+        await Task.Delay(1000);
+        StateHasChanged();
+    }
+
+    void SetTime()
+    {
+        DateTime now = DateTime.Now;
+        if (now.Hour < 9)
+        {
+            currentProgress = 0;
+        }
+        else if (now.Hour > 18)
+        {
+            currentProgress = 100;
+        }
+        else
+        {
+            currentProgress = ((int)now.TimeOfDay.TotalMinutes - 540) * 100 / 540;
+        }
+    }
+
+}

@@ -8,6 +8,24 @@ a, .btn-link {
     color: #0366d6;
 }
 
+.work-timer {
+    display: flex;
+    justify-content: space-between;
+    height: 15px;
+    font-size: 15px;
+    align-content: stretch;
+    align-items: center;
+}
+
+    .work-timer .progress {
+        flex-grow: 1;
+    }
+
+a, .btn-link {
+    color: #0366d6;
+}
+
+
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
