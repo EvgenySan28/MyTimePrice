@@ -1,22 +1,33 @@
 ﻿@page "/"
-<label>график работы</label>
-<select @onchange="OnSel">
-    <option value="1">5 через 2</option>
-    <option value="2">сутки через трое</option>
-    <option value="3">сутки через двое</option>
-    <option value="4">день ночь отсыпной выходной</option>
-</select>
-<br />
-<label>Зарплата</label>
-<input type="number"  name="name" @bind-value="mounthPay" />
-<br />
-<button @onclick="Calculate" >Рассчитать</button>
-<br />
-<label>Цена часа составляет </label>@hourPrice
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">график работы</label>
+    </div>
+    <select class="custom-select" id="inputGroupSelect01" @onchange="OnSel">
+        <option value="1">5 через 2</option>
+        <option value="2">сутки через трое</option>
+        <option value="3">сутки через двое</option>
+        <option value="4">день ночь отсыпной выходной</option>
+    </select>
+</div>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Зарплата</span>
+    </div>
+    <input type="number" class="form-control" aria-describedby="inputGroup-sizing-default" @bind-value="mounthPay">
+</div>
+<button class="btn btn-primary btn-lg container-fluid" @onclick="Calculate">Рассчитать</button>
+<div class="input-group mb-3 mt-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Цена часа составляет </span>
+    </div>
+    <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default" value=@hourPrice>
+</div>
+
 @code
 {
     int mounthPay;
-    int workHours =189;
+    int workHours = 189;
     int hourPrice;
 
     private void OnSel(ChangeEventArgs e)
@@ -24,12 +35,12 @@
         e.Value.ToString();
         switch (e.Value.ToString())
         {
-            case "1": workHours = 189;break;
+            case "1": workHours = 189; break;
             case "2": workHours = 192; break;
             case "3": workHours = 240; break;
             case "4": workHours = 192; break;
 
-            default:break;
+            default: break;
         }
     }
     private void Calculate()
