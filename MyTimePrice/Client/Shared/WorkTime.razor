@@ -10,10 +10,12 @@
     DateTime start { get; set; }
     DateTime stop { get; set; }
     int currentProgress;
+    //Происходит только при первой инициализации
     protected override void OnInitialized()
     {
         SetTime();
     }
+    //После отрисовки страницы
     protected override void OnAfterRender(bool firstRender)
     {
         ReloadPage();
