@@ -23,21 +23,5 @@ namespace MyTimePrice.Server
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-    //    public static IHostBuilder CreateHostBuilder(string[] args) =>
-    //Host.CreateDefaultBuilder(args)
-    //    .ConfigureWebHostDefaults(webBuilder =>
-    //    {
-    //        webBuilder.UseHttpSys(options =>
-    //        {
-    //            options.AllowSynchronousIO = false;
-    //            options.Authentication.Schemes = AuthenticationSchemes.None;
-    //            options.Authentication.AllowAnonymous = true;
-    //            options.MaxConnections = null;
-    //            options.MaxRequestBodySize = 30000000;
-    //            options.UrlPrefixes.Add("http://172.14.5.5:5000");
-    //            options.UrlPrefixes.Add("https://172.14.5.5:5001");
-    //        });
-    //        webBuilder.UseStartup<Startup>();
-    //    });
     }
 }
